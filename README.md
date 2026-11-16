@@ -18,7 +18,7 @@ Kopieer een skillmap naar `.cursor/skills/<naam>/` in een project (of naar `~/.c
 
 ## Agents
 
-Claude Code-subagents met hun eigen skills, in `agents/<naam>/`.
+Claude Code-plugins met agents en hun eigen skills, in `agents/<naam>/`. Installeren: `/plugin marketplace add carlokop/skills`, daarna `/plugin install <naam>@carlokop`.
 
 | Agent | Doel |
 |-------|------|

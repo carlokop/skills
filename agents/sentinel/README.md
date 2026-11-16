@@ -1,13 +1,14 @@
 # Sentinel
 
-Security- en codereviewer voor pull requests, als Claude Code-subagent. Overgezet uit Paperclip, zonder Paperclip-issues: alles wat Sentinel te melden heeft, staat in de PR.
+Security- en codereviewer voor pull requests, als Claude Code-plugin met twee agents. Overgezet uit Paperclip, zonder Paperclip-issues: alles wat Sentinel te melden heeft, staat in de PR.
 
 ## Inhoud
 
 | Pad | Wat | Herkomst |
 | --- | --- | --- |
-| `agents.md` | Agent `sentinel`: codereviews op Opus 5.5 high, en securityreviews als Fable niet beschikbaar is | Paperclip `AGENTS.md`, herschreven |
-| `sentinel-security.md` | Agent `sentinel-security`: securityreviews op Fable 5.2 medium | nieuw |
+| `.claude-plugin/plugin.json` | Pluginmanifest | nieuw |
+| `agents/sentinel.md` | Agent `sentinel`: codereviews op Opus 5.5 high, en securityreviews als Fable niet beschikbaar is | Paperclip `AGENTS.md`, herschreven |
+| `agents/sentinel-security.md` | Agent `sentinel-security`: securityreviews op Fable 5.2 medium | nieuw |
 | `skills/pr-review/` | Werkwijze per review: bereik, assen, publiceren | Paperclip `code-reviewer`, herschreven |
 | `skills/secrets-detectie/` | Hulpcontrole secrets | Paperclip, Paperclip-stappen vervangen |
 | `skills/dependency-audit/` | Hulpcontrole dependencies | Paperclip, Paperclip-stappen vervangen |
@@ -30,15 +31,25 @@ Op GitHub zet Sentinel bij de start een 👀 op je comment en plaatst hij na afl
 
 ## Installeren in Claude Code
 
-Voor je hele account (lokaal):
+Eenmalig, in Claude Code (lokaal of in een cloudsessie):
 
-```bash
-cp agents/sentinel/agents.md ~/.claude/agents/sentinel.md
-cp agents/sentinel/sentinel-security.md ~/.claude/agents/sentinel-security.md
-cp -r agents/sentinel/skills/* ~/.claude/skills/
+```
+/plugin marketplace add carlokop/skills
+/plugin install sentinel@carlokop
 ```
 
-Voor cloudsessies moeten agent en skills in de repo of in een plugin staan die de repo laadt; `~/.claude` van je computer is daar niet beschikbaar.
+Daarna staan `sentinel` en `sentinel-security` onder `/agents` en kun je ze met `@` aanroepen. Bijwerken: `/plugin marketplace update carlokop`.
+
+Om de plugin automatisch in een repo (en in cloudsessies op die repo) te laden, zet je in `.claude/settings.json` van die repo:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "carlokop": { "source": { "source": "github", "repo": "carlokop/skills" } }
+  },
+  "enabledPlugins": { "sentinel@carlokop": true }
+}
+```
 
 ## Nog te doen
 

@@ -1,0 +1,12 @@
+{
+  "name": "carlokop",
+  "owner": { "name": "Carlo Kop" },
+  "description": "Agents en skills van Carlo Kop.",
+  "plugins": [
+    {
+      "name": "sentinel",
+      "source": "./agents/sentinel",
+      "description": "Code- en securityreviewer voor pull requests."
+    }
+  ]
+}
