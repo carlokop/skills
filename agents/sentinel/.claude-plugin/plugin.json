@@ -1,0 +1,9 @@
+{
+  "name": "sentinel",
+  "version": "0.1.0",
+  "description": "Code- en securityreviewer voor pull requests: @ck-sentinel code review (Opus 5.5 high) en @ck-sentinel security review (Fable 5.2 medium, terugval Opus 5.5 high).",
+  "author": { "name": "Carlo Kop" },
+  "repository": "https://github.com/carlokop/skills",
+  "license": "MIT",
+  "keywords": ["code-review", "security", "pull-request", "github"]
+}

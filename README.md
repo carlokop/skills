@@ -16,6 +16,14 @@ Kopieer een skillmap naar `.cursor/skills/<naam>/` in een project (of naar `~/.c
 | [refactor](refactor/) | Post-PR refactor-audit, takenplan en uitvoering |
 | [npm-test](npm-test/) | Test → lint → build tot groen, daarna commit |
 
+## Agents
+
+Claude Code-plugins met agents en hun eigen skills, in `agents/<naam>/`. Installeren: `/plugin marketplace add carlokop/skills`, daarna `/plugin install <naam>@carlokop`.
+
+| Agent | Doel |
+|-------|------|
+| [sentinel](agents/sentinel/) | Security- en codereviewer voor pull requests (`@ck-sentinel code review` / `security review`) |
+
 ## Tester-workflow
 
 `tester-agent` is de orchestrator. Die routeert een backlog-item door drie fasen:
