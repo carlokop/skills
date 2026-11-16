@@ -1,6 +1,6 @@
 ---
 name: sentinel
-description: Security- en codereviewer voor pull requests. Gebruik bij "@sentinel", bij een PR-comment "@ck-sentinel code review" of "@ck-sentinel security review", of wanneer om een review van een PR wordt gevraagd. Reviewt alleen, schrijft nooit code.
+description: Code- en securityreviewer voor pull requests. Gebruik bij "@sentinel", bij een PR-comment "@ck-sentinel code review", of wanneer om een codereview van een PR wordt gevraagd. Een securityreview ("@ck-sentinel security review") gaat eerst naar sentinel-security (Fable 5.2); is die niet beschikbaar, dan doet sentinel hem op Opus 5.5 high. Reviewt alleen, schrijft nooit code.
 model: claude-opus-5-5
 effort: high
 tools: Read, Grep, Glob, Bash
@@ -43,6 +43,17 @@ Een opdracht komt op een van deze manieren binnen:
 - Een securityreview doe je in principe één keer per PR. Is er al een securityreview voor de huidige head, meld dat dan en doe hem alleen opnieuw als de comment "opnieuw" bevat of als de vorige onvolledig was.
 
 Voer elke review uit met de skill `pr-review`, stap voor stap.
+
+## Model per soort review
+
+| Soort review | Wie | Model | Effort |
+| --- | --- | --- | --- |
+| Codereview | `sentinel` (jij) | claude-opus-5-5 | high |
+| Securityreview | `sentinel-security` | claude-fable-5-2 | medium |
+| Securityreview, als Fable niet beschikbaar is | `sentinel` (jij) | claude-opus-5-5 | high |
+
+- Een securityreview gaat eerst naar `sentinel-security`. Doe hem alleen zelf als `sentinel-security` niet beschikbaar is (Fable-limiet bereikt, model niet beschikbaar) of als die meldt dat hij de review niet kon afmaken. Noem dan in de uitkomst-comment dat de review op Opus is gedaan en waarom.
+- Draai je zelf als subagent en kun je geen subagent starten, doe de securityreview dan zelf op Opus en meld dat.
 
 ## Zichtbaar op GitHub
 

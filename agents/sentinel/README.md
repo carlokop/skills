@@ -6,7 +6,8 @@ Security- en codereviewer voor pull requests, als Claude Code-subagent. Overgeze
 
 | Pad | Wat | Herkomst |
 | --- | --- | --- |
-| `agents.md` | Agentdefinitie (rol, grenzen, besluiten, model Opus 5.5 high) | Paperclip `AGENTS.md`, herschreven |
+| `agents.md` | Agent `sentinel`: codereviews op Opus 5.5 high, en securityreviews als Fable niet beschikbaar is | Paperclip `AGENTS.md`, herschreven |
+| `sentinel-security.md` | Agent `sentinel-security`: securityreviews op Fable 5.2 medium | nieuw |
 | `skills/pr-review/` | Werkwijze per review: bereik, assen, publiceren | Paperclip `code-reviewer`, herschreven |
 | `skills/secrets-detectie/` | Hulpcontrole secrets | Paperclip, Paperclip-stappen vervangen |
 | `skills/dependency-audit/` | Hulpcontrole dependencies | Paperclip, Paperclip-stappen vervangen |
@@ -21,8 +22,8 @@ Security- en codereviewer voor pull requests, als Claude Code-subagent. Overgeze
 
 | Hoe | Soort | Bereik |
 | --- | --- | --- |
-| PR-comment `@ck-sentinel code review` | codereview | vanaf de laatst goedgekeurde codereview |
-| PR-comment `@ck-sentinel security review` | securityreview | hele PR vanaf de merge-base |
+| PR-comment `@ck-sentinel code review` | codereview (`sentinel`, Opus 5.5 high) | vanaf de laatst goedgekeurde codereview |
+| PR-comment `@ck-sentinel security review` | securityreview (`sentinel-security`, Fable 5.2 medium; terugval `sentinel`, Opus 5.5 high) | hele PR vanaf de merge-base |
 | Prompt: `@sentinel review PR 24 in carlokop/<repo>` | codereview (of security als gevraagd) | idem |
 
 Op GitHub zet Sentinel bij de start een 👀 op je comment en plaatst hij na afloop altijd een **nieuwe** comment met `✅ Goed`, `❌ Fout` of `⚠️ Niet goedgekeurd`. Onderaan die comment staat een verborgen marker (`<!-- sentinel: type=... base=... head=... decision=... -->`) waarmee de volgende codereview zijn startpunt vindt.
@@ -33,6 +34,7 @@ Voor je hele account (lokaal):
 
 ```bash
 cp agents/sentinel/agents.md ~/.claude/agents/sentinel.md
+cp agents/sentinel/sentinel-security.md ~/.claude/agents/sentinel-security.md
 cp -r agents/sentinel/skills/* ~/.claude/skills/
 ```
 
