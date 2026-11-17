@@ -1,0 +1,213 @@
+# Sentinel-runner. Hoort in de PRIVATE repo carlokop/sentinel-runner (de logs
+# bevatten stukken code van je repo's). Wordt gestart door de webhook-ontvanger
+# na een PR-comment "@ck-sentinel ..." van carlokop.
+#
+# Nodig in deze repo (Settings → Secrets and variables → Actions):
+#   variable SENTINEL_APP_ID           App ID van de GitHub App ck-sentinel
+#   secret   SENTINEL_APP_PRIVATE_KEY  private key (.pem) van die App
+#   secret   CLAUDE_CODE_OAUTH_TOKEN   uitvoer van `claude setup-token` (je Max-abonnement)
+
+name: sentinel
+run-name: "Sentinel ${{ inputs.review_type }} review · ${{ inputs.repo }}#${{ inputs.pr }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "owner/repo van de PR"
+        required: true
+        type: string
+      pr:
+        description: "PR-nummer"
+        required: true
+        type: string
+      comment_id:
+        description: "ID van de opdracht-comment"
+        required: true
+        type: string
+      comment_kind:
+        description: "issue (gesprek) of review (comment op een coderegel)"
+        required: true
+        type: choice
+        options: [issue, review]
+      review_type:
+        description: "code of security"
+        required: true
+        type: choice
+        options: [code, security]
+
+permissions: {}
+
+concurrency:
+  group: sentinel-${{ inputs.repo }}-${{ inputs.pr }}-${{ inputs.review_type }}
+  cancel-in-progress: false
+
+env:
+  OWNER: carlokop
+  SKILLS_REF: master
+  CODE_AGENT: "sentinel:sentinel"
+  SECURITY_AGENT: "sentinel:sentinel-security"
+  CODE_MODEL: claude-opus-5-5
+  CODE_EFFORT: high
+  SECURITY_MODEL: claude-fable-5-2
+  SECURITY_EFFORT: medium
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Invoer controleren
+        id: input
+        env:
+          REPO: ${{ inputs.repo }}
+          PR: ${{ inputs.pr }}
+          COMMENT_ID: ${{ inputs.comment_id }}
+        run: |
+          [[ "$REPO" =~ ^${OWNER}/[A-Za-z0-9._-]+$ ]] || { echo "ongeldige repo"; exit 1; }
+          [[ "$PR" =~ ^[0-9]+$ ]] || { echo "ongeldig PR-nummer"; exit 1; }
+          [[ "$COMMENT_ID" =~ ^[0-9]+$ ]] || { echo "ongeldig comment-ID"; exit 1; }
+          echo "name=${REPO#*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Token voor alleen deze repo
+        id: app
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ vars.SENTINEL_APP_ID }}
+          private-key: ${{ secrets.SENTINEL_APP_PRIVATE_KEY }}
+          owner: ${{ env.OWNER }}
+          repositories: ${{ steps.input.outputs.name }}
+          permission-contents: read
+          permission-pull-requests: write
+          permission-issues: write
+          permission-checks: read
+          permission-statuses: read
+          permission-actions: read
+
+      - name: PR uitchecken
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ inputs.repo }}
+          token: ${{ steps.app.outputs.token }}
+          ref: refs/pull/${{ inputs.pr }}/head
+          fetch-depth: 0
+          path: target
+
+      - name: Sentinel-plugin ophalen
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.OWNER }}/skills
+          ref: ${{ env.SKILLS_REF }}
+          sparse-checkout: agents/sentinel
+          persist-credentials: false
+          path: sentinel-skills
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Claude Code en gitleaks installeren
+        run: |
+          npm install -g @anthropic-ai/claude-code@latest
+          GL=8.28.0
+          curl -sSfL "https://github.com/gitleaks/gitleaks/releases/download/v${GL}/gitleaks_${GL}_linux_x64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin gitleaks || echo "gitleaks niet beschikbaar; Sentinel meldt dat"
+
+      - name: Review
+        id: review
+        working-directory: target
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          REPO: ${{ inputs.repo }}
+          PR: ${{ inputs.pr }}
+          COMMENT_ID: ${{ inputs.comment_id }}
+          COMMENT_KIND: ${{ inputs.comment_kind }}
+          REVIEW_TYPE: ${{ inputs.review_type }}
+          PLUGIN_DIR: ${{ github.workspace }}/sentinel-skills/agents/sentinel
+        run: |
+          set -uo pipefail
+          git config --global --add safe.directory "$PWD"
+
+          ALLOWED=(Read Grep Glob Skill
+            "Bash(gh pr view:*)" "Bash(gh pr diff:*)" "Bash(gh pr checks:*)" "Bash(gh pr comment:*)" "Bash(gh api:*)"
+            "Bash(git fetch:*)" "Bash(git merge-base:*)" "Bash(git log:*)" "Bash(git diff:*)" "Bash(git show:*)"
+            "Bash(git range-diff:*)" "Bash(git rev-parse:*)" "Bash(git blame:*)" "Bash(git cat-file:*)"
+            "Bash(git ls-files:*)" "Bash(git status:*)"
+            "Bash(gitleaks:*)" "Bash(npm audit --package-lock-only:*)" "Bash(mkdir:*)")
+
+          prompt() { # $1 = soort, $2 = extra regels
+            cat <<EOF
+          Opdracht via een PR-comment op GitHub.
+          - Repository: $REPO
+          - PR: $PR
+          - Soort review: $1
+          - Comment-ID van de opdracht: $COMMENT_ID ($COMMENT_KIND: $( [ "$COMMENT_KIND" = issue ] && echo "comment in het gesprek" || echo "comment op een coderegel"))
+          Lees de opdracht-comment zelf via de GitHub API voor "opnieuw" of "vanaf <sha>".
+
+          Runner (GitHub Actions):
+          - De werkmap is een checkout van de PR-head met de volledige geschiedenis; remote origin is $REPO.
+          - De webhook heeft al een 👀 gezet; zet er geen tweede.
+          - Voer geen code van de PR uit: geen tests, builds, installs of scripts. Lees CI-uitkomsten met gh pr checks.
+            Toegestaan als hulpcontrole: gitleaks en npm audit --package-lock-only.
+          - Schrijf tijdelijke bestanden (review.json, uitkomst.md) in ${RUNNER_TEMP}/sentinel.
+          $2
+          Sluit je antwoord af met precies één regel: SENTINEL_STATUS: klaar  of  SENTINEL_STATUS: onvolledig — <reden>
+          EOF
+          }
+
+          run() { # $1 agent, $2 model, $3 effort, $4 prompt, $5 uitvoerbestand
+            mkdir -p "$RUNNER_TEMP/sentinel"
+            claude -p "$4" \
+              --restricted --strict-mcp-config \
+              --plugin-dir "$PLUGIN_DIR" \
+              --agent "$1" --model "$2" --effort "$3" \
+              --tools "Read,Grep,Glob,Bash,Skill" \
+              --permission-mode dontAsk --allowedTools "${ALLOWED[@]}" \
+              --add-dir "$RUNNER_TEMP/sentinel" --add-dir "$PLUGIN_DIR" \
+              --no-session-persistence --output-format json > "$5"
+            local rc=$?
+            jq -r '.result // empty' "$5" | tail -n 20 || true
+            if [ $rc -ne 0 ] || [ "$(jq -r '.is_error // false' "$5")" = "true" ]; then return 1; fi
+            jq -r '.result // ""' "$5" | grep -q 'SENTINEL_STATUS: klaar'
+          }
+
+          if [ "$REVIEW_TYPE" = code ]; then
+            run "$CODE_AGENT" "$CODE_MODEL" "$CODE_EFFORT" "$(prompt codereview '')" out-code.json \
+              && exit 0
+            echo "result=failed" >> "$GITHUB_OUTPUT"; exit 1
+          fi
+
+          # Securityreview: eerst Fable, bij een limiet of onvolledige review terugvallen op Opus.
+          if run "$SECURITY_AGENT" "$SECURITY_MODEL" "$SECURITY_EFFORT" \
+               "$(prompt securityreview '- De workflow regelt de terugval op Opus. Kun je de review niet afmaken, plaats dan GEEN uitkomst-comment en eindig met SENTINEL_STATUS: onvolledig.')" \
+               out-fable.json; then
+            exit 0
+          fi
+          reason=$(jq -r '.result // .subtype // "onbekend"' out-fable.json 2>/dev/null | grep -o 'SENTINEL_STATUS: onvolledig.*' | head -1)
+          [ -n "$reason" ] || reason="Fable 5.2 gaf een fout of limiet ($(jq -r '.subtype // "geen uitvoer"' out-fable.json 2>/dev/null))"
+          echo "Terugval op Opus: $reason"
+          run "$CODE_AGENT" "$CODE_MODEL" "$CODE_EFFORT" \
+            "$(prompt securityreview "- Dit is de terugval: sentinel-security (Fable 5.2) kon de review niet doen. Reden: $reason. Doe de securityreview zelf op Opus en noem dat in de uitkomst-comment.")" \
+            out-opus.json && exit 0
+          echo "result=failed" >> "$GITHUB_OUTPUT"; exit 1
+
+      - name: Melden als de review mislukt
+        if: failure() && steps.app.outputs.token != ''
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          REPO: ${{ inputs.repo }}
+          PR: ${{ inputs.pr }}
+          REVIEW_TYPE: ${{ inputs.review_type }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          soort=$([ "$REVIEW_TYPE" = security ] && echo securityreview || echo codereview)
+          # Alleen melden als Sentinel zelf geen uitkomst-comment voor deze run heeft geplaatst.
+          since=$(date -u -d '-60 min' +%Y-%m-%dT%H:%M:%SZ)
+          if gh api "repos/$REPO/issues/$PR/comments?since=$since" --paginate \
+               --jq '.[] | select(.user.type=="Bot") | .body' | grep -q "<!-- sentinel: type=${REVIEW_TYPE} "; then
+            exit 0
+          fi
+          printf '⚠️ Niet goedgekeurd — %s\n\nDe review is afgebroken voordat er een uitkomst was. Details staan in de run (alleen voor jou zichtbaar): %s\n' \
+            "$soort" "$RUN_URL" > "$RUNNER_TEMP/fail.md"
+          gh pr comment "$PR" -R "$REPO" --body-file "$RUNNER_TEMP/fail.md"

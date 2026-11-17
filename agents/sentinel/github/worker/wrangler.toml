@@ -1,0 +1,16 @@
+name = "sentinel-webhook"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+OWNER = "carlokop"
+ALLOWED_USERS = "carlokop"
+RUNNER_REPO = "carlokop/sentinel-runner"
+RUNNER_WORKFLOW = "sentinel.yml"
+RUNNER_REF = "main"
+APP_ID = "" # vul in na het aanmaken van de GitHub App
+
+# Geheimen zet je met `npx wrangler secret put <NAAM>`, nooit hier:
+#   WEBHOOK_SECRET   webhook secret van de GitHub App
+#   APP_PRIVATE_KEY  private key (.pem) van de GitHub App
+#   RUNNER_TOKEN     fine-grained token, alleen sentinel-runner, Actions: read and write
