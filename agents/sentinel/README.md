@@ -55,7 +55,11 @@ Om de plugin automatisch in een repo (en in cloudsessies op die repo) te laden, 
 
 Bij gebruik in een eigen sessie moet `gh` zijn ingelogd met rechten voor reacties en comments.
 
-## Trigger op GitHub (`@ck-sentinel`)
+## Trigger op GitHub zonder Cloudflare (WEB-370)
+
+De Worker hieronder is nooit live gezet (`APP_ID` staat leeg), dus `@ck-sentinel` deed niets. Werkende route: de workflow `.github/workflows/sentinel-review.yml` in de repo zelf (nu `carlokop/ops`, op de standaardbranch). Bij een reactie van `carlokop` met `@ck-sentinel code-review` op een PR zet de Action een 👀 en maakt via de Paperclip-API een issue voor Sentinel. Het resultaat staat als comment op dat Paperclip-issue. Secrets in de repo: `PAPERCLIP_URL` (publieke basis-URL, zonder `/api`) en `PAPERCLIP_API_KEY` (alleen issues aanmaken). Voor een andere repo: kopieer het bestand en zet dezelfde secrets.
+
+## Trigger op GitHub via Worker (`@ck-sentinel`, niet in gebruik)
 
 Eén private GitHub App op al je repo's, dus ook op elke nieuwe repo, zonder bestanden per repo.
 
