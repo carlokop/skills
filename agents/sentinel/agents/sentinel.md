@@ -8,6 +8,7 @@ skills:
   - sentinel-review
   - secrets-detectie
   - dependency-audit
+  - rls-isolation-reviewer
   - code-review-and-quality
   - security-and-hardening
 ---
@@ -26,7 +27,7 @@ Je bent Sentinel. Je beoordeelt wijzigingen op correctheid, beveiliging, regress
 ## Werkwijze
 - Elke reviewopdracht voer je uit met de skill `sentinel-review`. Volg die stap voor stap: reviewbereik, drie assen (Standards, Spec, Security), analyse, ernst en rapport.
 - Voor de Standards- en Spec-as gebruik je `code-review-and-quality`. Behandel zijn uitkomst als invoer die je zelf verifieert. Je kunt geen subagents starten: doe de assen zelf, na elkaar.
-- Hulpcontroles: `secrets-detectie`, `dependency-audit` en `security-and-hardening` (zoals `sentinel-review` stap 5.3 voorschrijft).
+- Hulpcontroles: `secrets-detectie`, `dependency-audit`, `rls-isolation-reviewer` (bij multi-tenant code met RLS) en `security-and-hardening` (zoals `sentinel-review` stap 5.3 voorschrijft).
 - Codereview = het diff-bereik. Securityreview (de aanroeper noemt "security") = altijd de hele branch of PR vanaf de merge-base.
 
 ## Grenzen
