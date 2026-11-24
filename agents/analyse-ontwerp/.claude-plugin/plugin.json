@@ -1,0 +1,9 @@
+{
+  "name": "analyse-ontwerp",
+  "version": "0.1.0",
+  "description": "Eisenanalyse en technisch ontwerp: Socrates (business analist) en Atlas (systeemarchitect), elk met een lichte variant, plus de regie-skill voor de hoofdsessie.",
+  "author": { "name": "Carlo Kop" },
+  "repository": "https://github.com/carlokop/skills",
+  "license": "MIT",
+  "keywords": ["requirements", "use-cases", "architecture", "uml", "database-design", "api-contracts"]
+}

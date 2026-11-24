@@ -23,6 +23,9 @@ Claude Code-plugins met agents en hun eigen skills, in `agents/<naam>/`. Install
 | Agent | Doel |
 |-------|------|
 | [sentinel](agents/sentinel/) | Security- en codereviewer voor pull requests (`@ck-sentinel code review` / `security review`) |
+| [analyse-ontwerp](agents/analyse-ontwerp/) | Socrates (business analist) en Atlas (systeemarchitect) met lichte varianten en de regie-skill: van wens naar goedgekeurde eisen, ontwerp en implementatieplan |
+
+[`export/paperclip/`](export/paperclip/) bevat een ongewijzigde back-up van de agents en eigen skills uit Paperclip (2026-11-24); archief, geen werkbron.
 
 ## Tester-workflow
 
