@@ -1,0 +1,8 @@
+{
+  "name": "trace",
+  "version": "0.1.0",
+  "description": "Tester Trace.",
+  "author": { "name": "Carlo Kop" },
+  "repository": "https://github.com/carlokop/skills",
+  "license": "MIT"
+}

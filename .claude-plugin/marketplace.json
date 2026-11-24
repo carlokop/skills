@@ -8,12 +8,27 @@
     {
       "name": "sentinel",
       "source": "./agents/sentinel",
-      "description": "Code- en securityreviewer voor pull requests."
+      "description": "Security- en codereviewer Sentinel."
     },
     {
-      "name": "analyse-ontwerp",
-      "source": "./agents/analyse-ontwerp",
-      "description": "Eisenanalyse en technisch ontwerp met Socrates en Atlas."
+      "name": "neo",
+      "source": "./agents/neo",
+      "description": "Development-agents Neo, Neo-licht en Neo-diep."
+    },
+    {
+      "name": "trace",
+      "source": "./agents/trace",
+      "description": "Tester Trace."
+    },
+    {
+      "name": "socrates",
+      "source": "./agents/socrates",
+      "description": "Business analist Socrates met regie-skill."
+    },
+    {
+      "name": "atlas",
+      "source": "./agents/atlas",
+      "description": "Systeemarchitect Atlas."
     }
   ]
 }
