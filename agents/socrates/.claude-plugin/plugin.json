@@ -1,0 +1,9 @@
+{
+  "name": "socrates",
+  "version": "0.1.0",
+  "description": "Business analist Socrates met lichte variant (socrates-licht) en de regie-skill: eisen, use cases, bedrijfsregels, paginabrieven en BPMN.",
+  "author": { "name": "Carlo Kop" },
+  "repository": "https://github.com/carlokop/skills",
+  "license": "MIT",
+  "keywords": ["requirements","use-cases","bpmn"]
+}

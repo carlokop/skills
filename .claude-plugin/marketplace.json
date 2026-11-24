@@ -1,12 +1,34 @@
 {
   "name": "carlokop",
-  "owner": { "name": "Carlo Kop" },
+  "owner": {
+    "name": "Carlo Kop"
+  },
   "description": "Agents en skills van Carlo Kop.",
   "plugins": [
     {
       "name": "sentinel",
       "source": "./agents/sentinel",
-      "description": "Code- en securityreviewer voor pull requests."
+      "description": "Security- en codereviewer Sentinel."
+    },
+    {
+      "name": "neo",
+      "source": "./agents/neo",
+      "description": "Development-agents Neo, Neo-licht en Neo-diep."
+    },
+    {
+      "name": "trace",
+      "source": "./agents/trace",
+      "description": "Tester Trace."
+    },
+    {
+      "name": "socrates",
+      "source": "./agents/socrates",
+      "description": "Business analist Socrates met regie-skill."
+    },
+    {
+      "name": "atlas",
+      "source": "./agents/atlas",
+      "description": "Systeemarchitect Atlas."
     }
   ]
 }

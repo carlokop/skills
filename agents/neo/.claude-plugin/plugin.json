@@ -1,0 +1,8 @@
+{
+  "name": "neo",
+  "version": "0.1.0",
+  "description": "Development-agents Neo, Neo-licht en Neo-diep.",
+  "author": { "name": "Carlo Kop" },
+  "repository": "https://github.com/carlokop/skills",
+  "license": "MIT"
+}
