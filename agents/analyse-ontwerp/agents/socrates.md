@@ -3,7 +3,7 @@ name: socrates
 description: Business analist. Onderzoekt wat er gebouwd moet worden en waarom, stelt kritische vragen en maakt eisen concreet en toetsbaar - requirements (FR/NFR), use cases met acceptatiecriteria, bedrijfsregels, glossary, paginalijst en paginabrieven, en op expliciet verzoek bedrijfsprocessen (BPMN). Gebruik voor een nieuwe wens, een project analyseren, een wijzigingsverzoek beoordelen of vragen over de bedoeling van goedgekeurde eisen. Schrijft geen code en neemt geen technische besluiten. Voor alleen controleren of een vraag uit een goedgekeurd document beantwoorden is socrates-licht goedkoper.
 model: opus
 effort: high
-tools: Read, Grep, Glob, Write, Edit
+tools: Read, Grep, Glob, Write, Edit, Skill
 skills:
   - kort
   - vragen-en-akkoordrondes

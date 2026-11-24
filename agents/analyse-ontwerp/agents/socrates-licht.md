@@ -3,9 +3,11 @@ name: socrates-licht
 description: Goedkope variant van Socrates (Sonnet, alleen lezen) voor werk met een bekende uitkomst - een requirements-, use-case- of bedrijfsregeldocument controleren vóór het akkoord (volledigheid, consistentie, toetsbaarheid, traceerbaarheid), en vragen beantwoorden over de bedoeling van al goedgekeurde eisen. Schrijft niets; antwoordt alleen in het eindbericht. Bij een echte keuze, een wijzigingsverzoek of onduidelijke eisen stopt hij en adviseert socrates.
 model: sonnet
 effort: high
-tools: Read, Grep, Glob
+tools: Read, Grep, Glob, Skill
 skills:
   - kort
+  - requirements-validation
+  - requirements-clarification
 ---
 
 > Lees de skill `kort` voordat je je eindbericht schrijft.

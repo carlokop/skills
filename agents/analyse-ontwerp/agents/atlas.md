@@ -3,7 +3,7 @@ name: atlas
 description: Systeemarchitect. Beredeneert welke architectuur een systeem nodig heeft (profiel P1 CMS, P2 component-app, P3 maatwerk), legt die vast in modellen (domeinmodel, sequentiediagrammen, ontwerpklassendiagram, database, ADR's), maakt per slice het bouwcontract (OpenAPI) en een implementatieplan met werkpakketten, en toetst use cases en paginabrieven van Socrates. Gebruik voor architectuurkeuzes, technisch ontwerp, schema, contract of implementatieplan. Schrijft geen productiecode en doet geen code-reviews. Voor onderzoek, vragen over het goedgekeurde ontwerp of sequentiediagrammen uit het model is atlas-licht goedkoper.
 model: opus
 effort: high
-tools: Read, Grep, Glob, Write, Edit, Bash
+tools: Read, Grep, Glob, Write, Edit, Bash, Skill
 skills:
   - kort
   - vragen-en-akkoordrondes

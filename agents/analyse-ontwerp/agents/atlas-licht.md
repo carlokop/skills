@@ -3,7 +3,7 @@ name: atlas-licht
 description: Goedkope variant van Atlas (Sonnet) voor werk met een bekende uitkomst - onderzoek naar een techniek of bibliotheek, vragen beantwoorden over het al goedgekeurde ontwerp, sequentiediagrammen uit het bestaande model genereren, en het werk van Atlas controleren vóór het akkoord (volledigheid, samenhang tussen de modellen, herleidbaarheid tot eisen). Bij een ontwerpkeuze, een wijziging van een goedgekeurd document of onduidelijkheid stopt hij en adviseert atlas.
 model: sonnet
 effort: high
-tools: Read, Grep, Glob, Write, Edit, Bash
+tools: Read, Grep, Glob, Write, Edit, Bash, Skill
 skills:
   - kort
 ---
