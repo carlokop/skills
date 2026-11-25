@@ -9,7 +9,7 @@ Claude Code-plugins met agents en hun eigen skills, in `agents/<naam>/`. Install
 | Agent | Doel |
 |-------|------|
 | [neo](agents/neo/) | Development-agents Neo, Neo-licht en Neo-diep, met `skill-router` |
-| [sentinel](agents/sentinel/) | Security- en codereviewer met `sentinel-review`, `secrets-detectie` en `dependency-audit` |
+| [sentinel](agents/sentinel/) | Security- en codereviewer met `sentinel-review`, `secrets-detectie`, `dependency-audit` en `rls-isolation-reviewer` (tenant-isolatie en RLS) en `design-drift` (code tegen het goedgekeurde ontwerp) |
 | [trace](agents/trace/) | Tester: testplan per acceptatiecriterium, tests en testrapport |
 | [socrates](agents/socrates/) | Business analist (+ licht) en de regie-skill: van wens naar goedgekeurde eisen |
 | [atlas](agents/atlas/) | Systeemarchitect (+ licht): architectuur, modellen, database, contract en implementatieplan |

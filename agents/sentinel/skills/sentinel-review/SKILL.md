@@ -13,7 +13,7 @@ Bepalen of een wijziging veilig en correct gemerged kan worden en de aanroeper d
 **Gerelateerde skills:**
 - `code-review-and-quality`: basis voor de Standards- en Spec-as (stap 4).
 - `security-and-hardening`: securitychecklist en hulpcontroles (stap 5.3).
-- `secrets-detectie` en `dependency-audit`: hulpcontroles (stap 5.3).
+- `secrets-detectie`, `dependency-audit`, `rls-isolation-reviewer` en `design-drift`: hulpcontroles (stap 5.3).
 
 ## 1. Invoer en reviewbereik
 Vereist: waar de wijziging staat (repo, branch of PR-nummer) en het type review: **codereview** (diff-bereik) of **securityreview** (hele branch/PR).
@@ -104,6 +104,8 @@ Behandel niet elk afwijkend patroon als kwetsbaarheid. Neem de context van de ap
 ### 5.3 Hulpcontroles
 - **Secrets:** gebruik `secrets-detectie`. Scan de diff én elke afzonderlijke commit in het bereik. Een gevonden secret is minstens P1.
 - **Dependencies:** gebruik `dependency-audit`. Installeer niets en draai geen scripts.
+- **Tenant-isolatie:** raakt het bereik tenantdata (tabellen, migraties, repositories, queries, use cases, jobs) in een multi-tenant applicatie met RLS, gebruik dan `rls-isolation-reviewer`. Een geverifieerd lek tussen tenants is P0 of P1. Geen multi-tenant code in het bereik: meld "niet van toepassing".
+- **Ontwerpafwijking:** raakt het bereik klassen, modulegrenzen, tabellen, endpoints of pakketten, gebruik dan `design-drift`. Geef het taakitem (Definition of Done en planningsakkoord) mee als de aanroeper dat noemt. Een afwijking is een ontwerpvraag, geen gewone bevinding. Geen ontwerp of geen relevante wijziging: meld "niet van toepassing" of "niet te toetsen".
 - **Aanvalsvlak veranderd?** Een nieuw endpoint, een nieuwe authenticatieflow, een nieuwe externe koppeling of een nieuwe stroom gevoelige data zonder threat model, of afwijkend van het bestaande model, is een ontwerpvraag: een threat model is nodig of moet worden bijgewerkt. Maak dat zelf niet.
 
 ### 5.4 Verifiëren
