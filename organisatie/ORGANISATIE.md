@@ -206,16 +206,16 @@ Alle vier rondes zijn Goedgekeurd (2026-11-25, Carlo): ronde 1 (B-43), ronde 2 (
 
 ## 10. Wat nu volgt
 
-Uitvoering via PRC-08 (organisatie aanpassen), in de volgorde van `afbouwlijst-paperclip.md` §E. In dit traject is niets aan agents of skills veranderd (B-39).
+Uitvoering via PRC-08 (organisatie aanpassen), in de volgorde van `afbouwlijst-paperclip.md` §E, op branch `feature/doorvoeren-fase-1`. Stand (2026-11-25): `backlog-regie`, `regie` en `vragen-en-akkoordrondes` zijn aangepast (CHG-072); PRP-073 (met PRP-081 deel A) en PRP-078 in de plugin socrates, en de Paperclip-resten in die plugin (CHG-076); de skills en definities van Atlas en atlas-licht voor PRP-074, PRP-079, PRP-080, PRP-081, PRP-082, PRP-084 en PRP-085 deel B, met CHG-075 en de Paperclip-rest in `render-png.mjs` (CHG-078). Alle skills uit de plugins socrates en atlas staan op "bestaat". Carlo wil geen Paperclip in de workflow (B-54); de oude Paperclip-skills in `skills/` zijn weg, en het uitzetten van Paperclip is geen voorwaarde voor de werkwijze (B-55).
 
-1. **A1, A2: de goedgekeurde voorstellen doorvoeren** (PRP-072 t/m PRP-085, `voorstellen.md`). Eerst de nieuwe skill `backlog-regie` (PRP-077) en de uitbreiding van `regie` (PRP-072, PRP-081). Daarna de overige: PRP-073 en PRP-074 (controle door de lichte varianten, nieuwe skill `ontwerp-controle`), PRP-075 en PRP-076 (stand en wekmechanisme), PRP-078 (juridische keuzes), PRP-079, PRP-080 en PRP-082 (skills van Atlas), PRP-083 (gedeelde skills in twee kopieën, samen bijwerken), PRP-084 (kwaliteitslat en regelbestanden), PRP-085 (vaste sessie Socrates–Atlas, alleen deel B). C3 (Paperclip-resten in de plugins) kan hierin mee.
+1. **A1, A2: de goedgekeurde voorstellen doorvoeren** (PRP-072 t/m PRP-085, `voorstellen.md`). Eerst de nieuwe skill `backlog-regie` (PRP-077) en de uitbreiding van `regie` (PRP-072, PRP-081). Daarna de overige: PRP-073 en PRP-074 (controle door de lichte varianten, nieuwe skill `ontwerp-controle`), PRP-075 en PRP-076 (stand en wekmechanisme), PRP-078 (juridische keuzes), PRP-079, PRP-080 en PRP-082 (skills van Atlas), PRP-083 (gedeelde skills in twee kopieën, samen bijwerken), PRP-084 (kwaliteitslat en regelbestanden), PRP-085 (vaste sessie Socrates–Atlas, alleen deel B). C3 (Paperclip-resten in de plugins) hoort hierbij (B-54).
 2. **A3, A4: open werk uit Paperclip overzetten en bewaren**, parallel met A2. Vraagt eerst antwoord op OPEN-42 (welke projecten open werk hebben) en OPEN-43 (kan Paperclip exporteren).
-3. **A5: één doorloop van PRC-01 of PRC-02 in Claude Code** met de aangepaste skills (ASM-108). Mislukt die, dan blijft Paperclip aan tot de oorzaak is opgelost.
-4. **B1 t/m B4: Paperclip uitzetten** (alleen Carlo): routines (OPEN-44), agents, projecten, toegang en sleutels.
-5. **C1 t/m C4: opruimen in de repo**: de Paperclip-skills in `skills/` (na `backlog-regie`), de bouwskills vallen buiten dit model, `README.md` r.19.
+3. **A5: één doorloop van PRC-01 of PRC-02 in Claude Code** met de aangepaste skills (ASM-108).
+4. **B1 t/m B4: Paperclip uitzetten** (alleen Carlo): routines (OPEN-44), agents, projecten, toegang en sleutels. A5 blijft de aanbevolen volgorde vóór het uitzetten (B-46); of en wanneer Carlo Paperclip uitzet, beslist hij zelf, en de werkwijze hangt er niet van af (B-55).
+
+**Al uitgevoerd (B-55):** C1 en C4 (de oude Paperclip-skills in `skills/` en de root-`README.md` r.19) zijn uitgevoerd. De bouwskills in `skills/` (C2) blijven en vallen buiten dit model.
 
 **Open punten die nog een besluit of proef vragen:**
-- **Bijvangst van Atlas bij PRP-082:** `uml-domain-modelling` r.72 laat een traceertabel aanvullen in `docs/architecture/use-cases.md`, een document van Socrates. Dat botst met de grens tussen hun documenten en vraagt een eigen besluit (gecontroleerd voorstel) voordat PRP-082 wordt doorgevoerd.
 - **Proefrun (A5):** OPEN-11 (werken de skills zoals beschreven) en OPEN-46 (volstaat de instructie voor het melden van een blokkade).
 - **Uit te zoeken vóór of tijdens de proefrun:** OPEN-33 (skills over plugins heen), OPEN-45 (hoe `regie` in de hoofdsessie komt), en voor het weekmoment OPEN-31, OPEN-38, OPEN-40 en OPEN-41 (cron).
 - **Alleen van belang als agents elkaar ooit zelf gaan starten:** OPEN-49 t/m OPEN-53 (niet nodig voor model 1.0, B-50).

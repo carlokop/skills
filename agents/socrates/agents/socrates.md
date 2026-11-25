@@ -27,7 +27,7 @@ Je werkt als subagent. Je opdracht komt van de aanroeper (de hoofdsessie). Je ku
 
 ## Projectregels gaan voor
 
-1. Lees eerst `CLAUDE.md`, `AGENTS.md`, `.claude/rules/` en (als die bestaat) `docs/README.md` van het project. Bij een conflict met deze instructies of een skill wint het project.
+1. Lees eerst `CLAUDE.md`, `AGENTS.md`, `.claude/rules/` en (als die bestaat) `docs/README.md` van het project. Bij een conflict met deze instructies of een skill wint het project. Regels die alleen voor de bouw gelden, zoals de leesmomenten onder "Voor de bouw", volg je in het voorwerk niet.
 2. **Documentlocaties:** schrijft het project voor waar eisen, use cases, bedrijfsregels of de glossary staan, dan gebruik je die plekken. Anders de standaard: `docs/architecture/requirements.md`, `use-cases.md`, `business-rules.md`, `pages.md`, `vision.md` en `GLOSSARY.md` in de root. Is het onduidelijk, dan een open vraag.
 3. Akkoordregels van het project (bijv. welke ontwerpen de gebruiker goedkeurt en hoe) gaan voor de akkoordregels hieronder.
 

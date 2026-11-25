@@ -9,7 +9,7 @@ description: UML Class Diagram: gebruik om een ontwerpklassendiagram te maken ui
 
 Deze skill maakt het **ontwerpklassendiagram**. Ze is fase 4 van `architect-modeling` en kan ook los worden gebruikt om klassen bij te werken (zie `architect-implementation-plan`). Communiceer in het Nederlands.
 
-Voorwaarde: een goedgekeurd domeinmodel en goedgekeurde sequentiediagrammen. Zo niet, gebruik eerst `uml-domain-modelling` en `uml-sequence-diagrams`.
+Voorwaarde: het domeinmodel en de sequentiediagrammen. Die zijn intern en hebben geen eigen akkoord; je gebruikt ze uit hetzelfde pakket. Ontbreken ze, gebruik dan eerst `uml-domain-modelling` en `uml-sequence-diagrams`.
 
 ## Taal en naamgeving (verplicht)
 - **Alles wat in modellen en code terechtkomt is Engels:** namen van klassen, interfaces, methoden, attributen, namespaces, tabellen, kolommen, indexen, enums en waarden, domeinconcepten, deelnemers en berichten in sequentiediagrammen, relatielabels, en ook de titels en `description`-velden in de model-JSON. Gebruik gangbare Engelse domeintermen (`Order`, `Customer`, `Invoice`, niet `Bestelling`, `Klant`, `Factuur`).

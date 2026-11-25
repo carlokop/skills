@@ -1,6 +1,6 @@
 {
   "name": "atlas",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Systeemarchitect Atlas met lichte variant (atlas-licht): architectuurkeuze, modellen, database, bouwcontract en implementatieplan.",
   "author": { "name": "Carlo Kop" },
   "repository": "https://github.com/carlokop/skills",

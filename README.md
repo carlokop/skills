@@ -16,7 +16,7 @@ Claude Code-plugins met agents en hun eigen skills, in `agents/<naam>/`. Install
 
 ## Skills
 
-[`skills/`](skills/) bevat de skills uit Paperclip die bij geen van de agents horen (flowbeheer rond Dr. Evil, forks, `testplan-en-rapport`, `npm-test-project`, `oordeel-hulp`). Ze zijn niet tool-neutraal gemaakt en nog niet in een plugin opgenomen.
+[`skills/`](skills/) bevat losse skills die bij geen van de agents horen: forks (`frontend-ui-engineering-fork`, `performance-optimization-fork`), `code-reviewer`, `testplan-en-rapport` en `npm-test-project`. Ze zijn nog niet tool-neutraal gemaakt en niet in een plugin opgenomen.
 
 ## Licentie
 

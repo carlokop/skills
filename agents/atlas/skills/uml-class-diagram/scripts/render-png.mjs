@@ -6,8 +6,8 @@
 //   node render-png.mjs <check-dir> [--theme light|dark|both] [--only naam,naam] [--tile 1600]
 //
 // Gebruikt `sharp` (librsvg). Dat is geen onderdeel van de skill: het script zoekt het in
-// SHARP_PATH, in node_modules van de werkmap en in de Paperclip-installatie. Het lettertype komt
-// uit de skill (fonts/), via een eigen fontconfig-bestand.
+// SHARP_PATH en in node_modules van de werkmap. Het lettertype komt uit de skill (fonts/), via een
+// eigen fontconfig-bestand.
 import { createRequire } from 'node:module';
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -25,7 +25,7 @@ const fc = join(tmpdir(), 'ontwerppagina-fonts.conf');
 writeFileSync(fc, `<?xml version="1.0"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd"><fontconfig><dir>${join(here, 'fonts')}</dir><cachedir>${join(tmpdir(), 'ontwerppagina-fc-cache')}</cachedir><alias><family>DiagramSans</family><prefer><family>Liberation Sans</family></prefer></alias></fontconfig>`);
 process.env.FONTCONFIG_FILE = fc;
 
-const candidates = [process.env.SHARP_PATH, join(process.cwd(), 'node_modules', 'x.js'), '/app/node_modules/.pnpm/node_modules/x.js'].filter(Boolean);
+const candidates = [process.env.SHARP_PATH, join(process.cwd(), 'node_modules', 'x.js')].filter(Boolean);
 let sharp = null;
 for (const c of candidates) { try { sharp = createRequire(c)('sharp'); break; } catch { /* volgende */ } }
 if (!sharp) { console.error('sharp niet gevonden; zet SHARP_PATH naar een map met node_modules/sharp. De beeldcontrole kan dan niet automatisch.'); process.exit(4); }

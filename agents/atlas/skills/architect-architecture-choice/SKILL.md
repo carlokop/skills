@@ -53,8 +53,8 @@ Gebruik een tabel: per alternatief hoe het scoort op elke driver (++ / + / 0 / �
 ### 6. Kies en motiveer
 Eén duidelijke aanbeveling, met de belangrijkste nadelen eerlijk benoemd en wat je doet om die te beperken. Voorkeursrichting bij twijfel: de eenvoudigste architectuur die de drivers haalt (vaak een goed opgedeelde monoliet) en uitbreidingspunten waar de eisen toekomstige variatie voorspellen. Voeg geen complexiteit toe voor onzekere eisen. Houd rekening met het **bestaande framework en de stack** (bijv. Laravel: Eloquent, service-laag, queues, events; ASP.NET: Clean Architecture/Onion, EF Core, DI) en de conventies daarvan. Kies de architectuur zo dat het framework mee werkt, niet tegen.
 
-### 7. Leg beslissingen vast als ADR (spaarzaam)
-Alleen als alle drie waar zijn, zoals `domain-modeling` voorschrijft: de keuze is moeilijk terug te draaien, zonder context verrassend voor een latere lezer, én het resultaat van een echte afweging. Typisch: architectuurstijl, technologie met lock-in, integratiestijl tussen contexten, bewuste afwijkingen van het voor de hand liggende, randvoorwaarden die niet in de code zichtbaar zijn. Makkelijk terug te draaien keuzes krijgen geen ADR.
+### 7. Leg beslissingen vast als ADR (spaarzaam bij de eerste keuze)
+Bij een wijziging van het globale ontwerp leg je altijd een ADR vast. Bij de eerste architectuurkeuze alleen als alle drie waar zijn, zoals `domain-modeling` voorschrijft: de keuze is moeilijk terug te draaien, zonder context verrassend voor een latere lezer, én het resultaat van een echte afweging. Typisch: architectuurstijl, technologie met lock-in, integratiestijl tussen contexten, bewuste afwijkingen van het voor de hand liggende, randvoorwaarden die niet in de code zichtbaar zijn. Bij de eerste keuze krijgen makkelijk terug te draaien keuzes geen ADR.
 
 ### 8. Schets de globale structuur
 Een contextdiagram en een containerdiagram in Mermaid (`flowchart`) in `architecture.md`. Geen klassen of tabellen; dat komt later in de modelleerskills en `architect-database`.
