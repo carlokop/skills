@@ -12,19 +12,19 @@
 | PRP | Goedgekeurde tekst | Ronde 3 | Vraag | Besluit (B-46, B-47, B-48) |
 | --- | --- | --- | --- | --- |
 | PRP-072 | ronde 1 | sectie "Ronde 3"; deel A en deel B | 6, 7 | ja, ja |
-| PRP-073 | ronde 1 | sectie "Ronde 3" (keuze van de skill) | 12 | ja |
-| PRP-074 | ronde 1, aangevuld via CHG-042 | sectie "Ronde 3" (nieuwe skill, aanvulling a t/m d) | 13 | ja, met bewust restrisico (FND-103) |
+| PRP-073 | ronde 1 | sectie "Ronde 3" (keuze van de skill) | 12 | ja; doorgevoerd in CHG-076 |
+| PRP-074 | ronde 1, aangevuld via CHG-042 | sectie "Ronde 3" (nieuwe skill, aanvulling a t/m d) | 13 | ja, met bewust restrisico (FND-103); doorgevoerd in CHG-078 (`ontwerp-controle`, `atlas-licht.md`) |
 | PRP-075 | ronde 1 (kern bevestigd, B-43) | sectie "Ronde 3" (ASM-104) | 3, 4 | ja, ja |
 | PRP-076 | ronde 1 (kern bevestigd, B-43) | sectie "Ronde 3" (ASM-105) | 9 | ja |
 | PRP-077 | ronde 1, aangepast via CHG-042 | sectie "Ronde 3" (uitwerking, ASM-106) | 8, 10 | ja, ja |
-| PRP-078 | ronde 1 (kern bevestigd, B-43) | — | geen | kern bevestigd (B-43) |
-| PRP-079 | ronde 1 | — | 14 | ja |
-| PRP-080 | CHG-042 (B-44) | sectie "Ronde 3" (wat in r.194 vervalt) | 15 | ja; de sectie "Ronde 3" vervangt de goedgekeurde zin over "backlog-items" |
-| PRP-081 | — | nieuw; deel A en deel B | 18, 19 | ja, ja |
-| PRP-082 | — | nieuw; deel A en deel B | 20, 21 | ja (met aangepaste vraagtekst), ja |
+| PRP-078 | ronde 1 (kern bevestigd, B-43) | — | geen | kern bevestigd (B-43); doorgevoerd in CHG-076 |
+| PRP-079 | ronde 1 | — | 14 | ja; doorgevoerd in CHG-078 |
+| PRP-080 | CHG-042 (B-44) | sectie "Ronde 3" (wat in r.194 vervalt) | 15 | ja; de sectie "Ronde 3" vervangt de goedgekeurde zin over "backlog-items"; doorgevoerd in CHG-078 |
+| PRP-081 | — | nieuw; deel A en deel B | 18, 19 | ja, ja; deel A in `requirements-validation` doorgevoerd in CHG-076, bij Atlas (`ontwerp-controle`, `architect-implementation-plan` r.197) in CHG-078 |
+| PRP-082 | — | nieuw; deel A en deel B | 20, 21 | ja (met aangepaste vraagtekst), ja; doorgevoerd in CHG-078; `uml-domain-modelling` r.72: voorstel CHG-075 goedgekeurd (B-55) en doorgevoerd |
 | PRP-083 | — | nieuw; deel A en deel B (de herschrijving uit 1.0.17 is teruggedraaid) | 22, 23 | ja, ja (B-47: vraag 22 gewijzigd in twee kopieën) |
-| PRP-084 | — | nieuw (1.0.16); deel A en deel B (1.0.17, bijgewerkt in 1.0.18) | 28, 36 | deel A: nieuwe skill (B-47, vraag 28 "Nee, nieuwe skill"); deel B ja (B-47) |
-| PRP-085 | — | uit voorstel CHG-066 (1.0.25 t/m 1.0.26), in 1.0.27 | CHG-066 vraag A, B | alleen deel B (optie c): ja (B-50); deel A vervalt |
+| PRP-084 | — | nieuw (1.0.16); deel A en deel B (1.0.17, bijgewerkt in 1.0.18) | 28, 36 | deel A: nieuwe skill (B-47, vraag 28 "Nee, nieuwe skill"); deel B ja (B-47); doorgevoerd in CHG-078 (`regelbestanden-en-kwaliteitslat`, `architect-conventions`, `atlas.md`) |
+| PRP-085 | — | uit voorstel CHG-066 (1.0.25 t/m 1.0.26), in 1.0.27 | CHG-066 vraag A, B | alleen deel B (optie c): ja (B-50); deel A vervalt; deel B in `regie` doorgevoerd in fase 1, in `architect-use-case-review` in CHG-078 |
 
 **Legenda:** PRP = voorstel · FND = bevinding · PRC = proces · ROL / AGT = rol / agent · GOV = akkoordmoment van Carlo · ASM = aanname · OPEN = open vraag · B = besluit van Carlo · UC1 / UC2 = nieuwe klant / backlog per slice · P1 / P2 / P3 = architectuurprofiel (CMS / component-app / maatwerk) · r. = regelnummer.
 
@@ -131,8 +131,8 @@ Deze voorstellen staan los van de huidige situatie (`situatie: to-be`). Er veran
   - **Plek:** plugin socrates, naast `regie` (ASM-106). Het ritme komt ook in deze skill (ASM-105).
   - **Ondersteunt:** ACT-01.29, ACT-02.1, ACT-02.11, ACT-02.17, ACT-02.53, ACT-02.54 en ACT-07.1 t/m ACT-07.4 (CAP-13, CAP-14, CAP-20, CAP-37, CAP-38).
   - **Input:** het goedgekeurde bouwcontract en de werkpakketten, het sliceplan, de uitbreidingslijst, `docs/backlog/` en de stand.
-  - **Output:** taak- en epicbestanden in `docs/backlog/todo/` (ASM-101, ASM-102), met in de kop van elke taak verwijzingen naar CLAUDE.md, AGENTS.md, het conventiebestand en CONSTRAINTS.md (B-48, vraag 37); de uitkomst van de vaste controles en van "backlog gereed"; de bijgewerkte uitbreidingslijst; de telling voor de dagstart; de melding aan Carlo van wat op hem wacht; de cron-taak van het weekmoment.
-  - **Validatie:** elk werkpakket is gedekt door taakbestanden met de velden van ASM-102; het epic noemt alle taken; de skill verplaatst niets naar in-progress of done (ASM-100); de telling volgt ASM-89; geen keuze namens Carlo.
+  - **Output:** taak- en epicbestanden in `docs/backlog/todo/` (ASM-101, ASM-102; sinds B-53 met werkpakket en pad van het plan, paginatype, "Opruimen vanaf" en "n.v.t."), met in de kop van elke taak verwijzingen naar CLAUDE.md, AGENTS.md, het conventiebestand en CONSTRAINTS.md (B-48, vraag 37); de uitkomst van de vaste controles en van "backlog gereed"; de bijgewerkte uitbreidingslijst; de telling voor de dagstart; de melding aan Carlo van wat op hem wacht; de cron-taak van het weekmoment.
+  - **Validatie:** elk werkpakket is gedekt door taakbestanden met de velden van ASM-102; elke paginataak noemt een paginabrief en een paginatype, elke opruimtaak "Opruimen vanaf" (B-53, CHG-073); het epic noemt alle taken; de skill verplaatst niets naar in-progress of done (ASM-100); de telling volgt ASM-89; geen keuze namens Carlo.
   - **Wat uit de Paperclip-skills overgaat, en wat wegvalt:** zie `afbouwlijst-paperclip.md` stap C1.
 
 ## PRP-080 toets van backlog-items standaard
@@ -147,6 +147,7 @@ Toegevoegd met CHG-042 deel B (goedgekeurd in B-44).
 - **Gevolgen:** PRC-02, PRC-03.
 - **Risico's:** meer werk voor Atlas (FND-018).
 - **Ronde 3 (1.0.13, feitencontrole Atlas):** in r.194 vervalt alleen "(als de aanroeper dat vraagt)". "Epics en taken" blijft, want in 1.0 zijn er taak- en epicbestanden (B-44, B-45). Hetzelfde geldt voor `atlas.md` r.44: "Taken toetsen" en "frontendtaak" kloppen in 1.0. De toets leest die bestanden standaard in `docs/backlog/`, of op de plek die het project voorschrijft (atlas.md r.31).
+- **Gevolg van B-53 (CHG-073), voor fase 3:** de toets in r.194 kijkt ook na of elke paginataak het paginatype noemt en elke opruimtaak "Opruimen vanaf". Dat is de technische keuze van Atlas (feitencontrole Atlas op CHG-073), geen besluit van Carlo.
   - **Vervangt** het deel van de goedgekeurde wijziging hierboven dat zegt: '"taken" of "epics en taken" wordt "backlog-items"'. Dat vervangen geldt pas als Carlo ja zegt op vraag 15; bij nee blijft de goedgekeurde tekst (CHG-053).
 
 ## PRP-078 juridische keuzes in de analyse
@@ -204,7 +205,7 @@ Nieuw in ronde 3 (Concept, 1.0.12; in 1.0.13 herzien na de feitencontrole van At
 - **Niet meer in dit voorstel (1.0.13):** `architect-implementation-plan` r.194 (alleen "als de aanroeper dat vraagt" vervalt, dat is PRP-080; het pad is "standaard `docs/backlog/`, of de plek die het project voorschrijft", atlas.md r.31); r.197 en `architect-vertical-slices` r.49 kloppen in 1.0. Het voorbeeld in `bpmn-eindontwerp/voorbeeld-artifact.html` (plugin socrates) volgt na ronde 4 (afbouwlijst C3).
 - **Verbetering:** Atlas leest geen tegenstrijdige regels meer, en de scripts werken zonder Paperclip.
 - **Capabilities en skills:** CAP-05, CAP-07, CAP-08, CAP-12; de genoemde skills (uitbreiden).
-- **Validatie:** na de wijziging geeft een grep op "goedgekeurd domeinmodel", "taken voor de developers" en "Paperclip" in `agents/atlas/skills/` en `agents/atlas/agents/` geen treffers meer. `agents/atlas/README.md` r.19 is een bewuste, historische verwijzing en valt erbuiten.
+- **Validatie:** na de wijziging geeft een grep op "goedgekeurd domeinmodel", "taken voor de developers" en "Paperclip" in `agents/atlas/` geen treffers meer, ook niet in `agents/atlas/README.md` (B-54: geen Paperclip in de workflow; de eerdere uitzondering voor r.19 vervalt).
 - **Gevolgen:** PRC-01, PRC-02.
 - **Risico's:** zonder `SHARP_PATH` en zonder sharp in de werkmap kan de beeldcontrole van de diagrammen niet automatisch (render-png.mjs r.31 meldt dat al).
 

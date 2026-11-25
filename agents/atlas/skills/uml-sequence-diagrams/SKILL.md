@@ -9,7 +9,7 @@ description: UML Sequence Diagrams: gebruik om de belangrijkste use cases uit te
 
 Deze skill werkt de relevante use cases uit tot **sequentiediagrammen**. Ze is fase 3 van `architect-modeling` en kan ook los worden gebruikt voor één nieuwe use case (zie `architect-implementation-plan`). Communiceer in het Nederlands.
 
-Voorwaarde: goedgekeurde use cases en een goedgekeurd domeinmodel. Zo niet, gebruik eerst `uml-use-cases` en `uml-domain-modelling`.
+Voorwaarde: goedgekeurde use cases en het domeinmodel. Het domeinmodel is intern en heeft geen eigen akkoord; je gebruikt het domeinmodel uit hetzelfde pakket. Ontbreekt het, gebruik dan eerst `uml-domain-modelling` (use cases: `uml-use-cases`).
 
 ## Taal en naamgeving (verplicht)
 - **Alles wat in modellen en code terechtkomt is Engels:** namen van klassen, interfaces, methoden, attributen, namespaces, tabellen, kolommen, indexen, enums en waarden, domeinconcepten, deelnemers en berichten in sequentiediagrammen, relatielabels, en ook de titels en `description`-velden in de model-JSON. Gebruik gangbare Engelse domeintermen (`Order`, `Customer`, `Invoice`, niet `Bestelling`, `Klant`, `Factuur`).

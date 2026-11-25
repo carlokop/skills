@@ -35,61 +35,61 @@ Nummers uit 0.18 blijven (B-28). CAP-28 t/m CAP-34 gaan over de bouw en vallen b
 | CAP-10 | opdelen in slices | sliceplan met volgorde | ACT-01.16, 02.5 | `architect-vertical-slices`, `planning-and-task-breakdown` |
 | CAP-11 | bouwcontract ontwerpen | OpenAPI met leesbare versie, of templatecontract | ACT-02.8, 02.58 | `architect-api-contracts`, `api-and-interface-design`, `deprecation-and-migration`, `doubt-driven-development` |
 | CAP-12 | implementatieplanning | werkpakketten | ACT-02.9 | `architect-implementation-plan`, `planning-and-task-breakdown` |
-| CAP-13 | backlog opbouwen | taak- en epicbestanden, uitbreidingslijst | ACT-01.29, 02.11 | `backlog-regie` (nieuw) |
-| CAP-14 | poortcontrole | vaste controles, backlog gereed | ACT-02.53, 02.54 | `backlog-regie` (nieuw) |
+| CAP-13 | backlog opbouwen | taak- en epicbestanden, uitbreidingslijst | ACT-01.29, 02.11 | `backlog-regie` |
+| CAP-14 | poortcontrole | vaste controles, backlog gereed | ACT-02.53, 02.54 | `backlog-regie` |
 | CAP-15 | goedkeuring aanvragen en vastleggen | indienen, verwerken, status zetten | ACT-03.1, 03.3, 03.4, 03.7, 03.13, 05.2 | `vragen-en-akkoordrondes`, `documenten-bijwerken` |
 | CAP-16 | productbesluit en antwoord (mens) | alleen Carlo | ACT-01.1, 02.2, 03.2, 05.5 | n.v.t. |
 | CAP-17 | vragen en grill-sessies | vragen, antwoorden, wijzigingsverzoek, contextverslag | ACT-01.3, 02.3, 04.1 t/m 04.6, 04.55, 04.56 | `vragen-en-akkoordrondes`, `grilling`, `requirements-clarification`, `architect-clarification`, `api-and-interface-design`, `deprecation-and-migration` |
 | CAP-18 | escaleren | opties voorleggen, besluit uitvoeren | ACT-03.10, 03.11, 04.52 t/m 04.54, 05.3, 05.4, 05.6, 06.5, 06.7 | `regie`, `vragen-en-akkoordrondes` |
 | CAP-19 | blokkades bewaken | melden, vastleggen, oplossen | ACT-06.1, 06.4 | `regie`; ACT-06.1: geen skill, instructie in de agentdefinitie (OPEN-46) |
-| CAP-20 | volgorde en flow bewaken | volgende slice of wens, weekmoment, dagstart | ACT-01.29, 02.1, 02.17, 07.1, 07.3, 07.4 | `backlog-regie` (nieuw) |
+| CAP-20 | volgorde en flow bewaken | volgende slice of wens, weekmoment, dagstart | ACT-01.29, 02.1, 02.17, 07.1, 07.3, 07.4 | `backlog-regie` |
 | CAP-21 | ontwerpbesluiten vastleggen | ADR's | ACT-01.11, 01.24, 02.9, 02.55, 04.4 | `documentation-and-adrs` |
-| CAP-22 | ontwikkelafspraken vastleggen | conventiebestand; in slice 1 ook kwaliteitslat en regelbestanden (B-46; stap volgens voorstel CHG-056) | ACT-02.57; ACT-02.6 en 02.7 bij bijwerken | `regelbestanden-en-kwaliteitslat` (nieuw), `architect-conventions`, `constraint-driven-development`, `context-engineering` |
+| CAP-22 | ontwikkelafspraken vastleggen | conventiebestand; in slice 1 ook kwaliteitslat en regelbestanden (B-46; stap volgens voorstel CHG-056) | ACT-02.57; ACT-02.6 en 02.7 bij bijwerken | `regelbestanden-en-kwaliteitslat`, `architect-conventions`, `constraint-driven-development`, `context-engineering` |
 | CAP-23 | rondes tellen en begrenzen | rondes en afkeuringen in de stand | ACT-03.5, 03.11, 04.51, 04.52, 05.1 | `vragen-en-akkoordrondes`, `regie` |
 | CAP-24 | paginalijst en paginabrieven | nu en later, brieven, afstemmen | ACT-01.27, 01.58, 02.15, 02.56 | `paginalijst-en-paginabrieven` |
 | CAP-25 | paginaontwerp (mens) | alleen Carlo (ASM-28) | ACT-01.52, 01.28, 02.16 | n.v.t. |
 | CAP-26 | contentmodel en configuratie (P1) | | ACT-01.60, 02.7 | `architect-cms-configuratie` |
 | CAP-27 | componenten-, route- en dataontwerp (P2) | | ACT-01.59, 02.7 | `architect-componentontwerp` |
-| CAP-35 | controle vóór het akkoord | controle, nacontrole, toets van backlog-items | ACT-03.6, 03.14 | `requirements-validation`, `ontwerp-controle` (nieuw), `architect-implementation-plan` |
+| CAP-35 | controle vóór het akkoord | controle, nacontrole, toets van backlog-items | ACT-03.6, 03.14 | `requirements-validation`, `ontwerp-controle`, `architect-implementation-plan` |
 | CAP-36 | vragendialoog met de project owner | vragen stellen, antwoorden letterlijk teruggeven | ACT-03.8, 03.9, 04.57 | `regie` |
-| CAP-37 | stand van de keten bijhouden | stand in de klantrepo (ASM-80, ASM-104) | ACT-01.2, 02.17, 03.5, 03.13, 06.4, 07.1, 07.4 | `regie`, `backlog-regie` (nieuw) |
-| CAP-38 | wekmechanisme beheren | cron-taak van het weekmoment | ACT-07.2 | `backlog-regie` (nieuw) |
+| CAP-37 | stand van de keten bijhouden | stand in de klantrepo (ASM-80, ASM-104) | ACT-01.2, 02.17, 03.5, 03.13, 06.4, 07.1, 07.4 | `regie`, `backlog-regie` |
+| CAP-38 | wekmechanisme beheren | cron-taak van het weekmoment | ACT-07.2 | `backlog-regie` |
 | CAP-39 | ontwerppagina maken | HTML-pagina van een ontwerpdocument met akkoord; publiceren als Artifact optioneel | ACT-01.13, 01.24, 01.59, 01.60, 02.8; 02.6 en 02.7 bij een wijziging | `ontwerppagina` |
 
 ## 2. Skills
 
 | Skill | Plugin | Status | Capability | Gebruikers | Wat er moet veranderen |
 | --- | --- | --- | --- | --- | --- |
-| `requirements-analysis` | socrates | uitbreiden | CAP-02 | AGT-02 | vaste vraag naar juridische keuzes (PRP-078) |
+| `requirements-analysis` | socrates | bestaat | CAP-02 | AGT-02 | — (PRP-078 doorgevoerd in CHG-076) |
 | `domain-analysis` | socrates | bestaat | CAP-02 | AGT-02 | — |
 | `uml-use-cases` | socrates | bestaat | CAP-03 | AGT-02 | — |
 | `paginalijst-en-paginabrieven` | socrates | bestaat | CAP-24 | AGT-02 | — |
-| `requirements-validation` | socrates | uitbreiden | CAP-35 | AGT-09 (voorgeladen), AGT-02 | visie, paginalijst en brieven (PRP-073); nacontrole (PRP-081) |
+| `requirements-validation` | socrates | bestaat | CAP-35 | AGT-09 (voorgeladen), AGT-02 | — (PRP-073 en PRP-081 deel A doorgevoerd in CHG-076) |
 | `requirements-clarification` | socrates | bestaat | CAP-17 | AGT-02, AGT-09 | — |
-| `regie` | socrates | uitbreiden | CAP-01, 18, 19, 23, 36, 37 | AGT-08 | keten van 1.0, afkeuring, blokkade, stand (PRP-072, 075); nacontrole en uitgang (PRP-081); toets standaard (PRP-080); verboden op backlog-items (FND-088); vraag aan Carlo uit een lopende sessie, stand per ronde (PRP-085) |
-| `vragen-en-akkoordrondes` | socrates en atlas | uitbreiden | CAP-15, 17, 23 | AGT-02, AGT-03 (voorgeladen) | nacontrole, uitgang, tellingen in de stand (PRP-081); productkeuze in de sessie direct aan Carlo, lopend contextverslag (PRP-085) |
+| `regie` | socrates | bestaat | CAP-01, 18, 19, 23, 36, 37 | AGT-08 | — (PRP-072, 075, 080, 081 en 085 doorgevoerd in fase 1) |
+| `vragen-en-akkoordrondes` | socrates en atlas | bestaat | CAP-15, 17, 23 | AGT-02, AGT-03 (voorgeladen) | — (PRP-081 en 085 doorgevoerd in fase 1, beide kopieën) |
 | `architectuurprofielen` | socrates en atlas | bestaat | CAP-02, 05 | AGT-02, AGT-03 | twee kopieën, samen bijwerken en vergelijken (PRP-083, B-47) |
 | `documenten-bijwerken` | socrates en atlas | bestaat | CAP-15 | AGT-02, AGT-03 | idem |
 | `overdracht` | socrates en atlas | bestaat | CAP-01 | AGT-02, AGT-03 | idem; geen vaste stap |
 | `kort` | socrates en atlas | bestaat | alle schrijvende stappen | AGT-02, 03, 09, 10 (voorgeladen) | idem |
-| `architect-use-case-review` | atlas | uitbreiden | CAP-04 | AGT-03 | r.16, r.22 en r.29: één lopend contextverslag per sessie; binnen een toetsronde de antwoorden van Socrates terug naar dezelfde Atlas (ASM-124; PRP-085, B-50) |
-| `architect-architecture-choice` | atlas | uitbreiden | CAP-05 | AGT-03 | r.57: ADR alleen bij drie voorwaarden, atlas.md r.48 eist er een bij elke wijziging. Wijziging (PRP-082): bij de eerste architectuurkeuze blijven de drie voorwaarden; bij een wijziging van het globale ontwerp altijd een ADR |
+| `architect-use-case-review` | atlas | bestaat | CAP-04 | AGT-03 | — (PRP-085 deel B doorgevoerd in CHG-078: lopend contextverslag, hervatten binnen een toetsronde) |
+| `architect-architecture-choice` | atlas | bestaat | CAP-05 | AGT-03 | — (PRP-082 doorgevoerd in CHG-078: r.57 ADR bij elke wijziging van het globale ontwerp) |
 | `architect-cms-configuratie` | atlas | bestaat | CAP-26 | AGT-03 | — |
 | `architect-componentontwerp` | atlas | bestaat | CAP-27 | AGT-03 | — |
 | `architect-modeling` | atlas | bestaat | CAP-06, 07, 08, 09 | AGT-03 | — |
-| `uml-domain-modelling` | atlas | bestaat | CAP-06 | AGT-03 | — |
-| `uml-sequence-diagrams` | atlas | uitbreiden | CAP-07 | AGT-03, AGT-10 | r.12 eist een goedgekeurd domeinmodel (PRP-082) |
-| `uml-class-diagram` | atlas | uitbreiden | CAP-08 | AGT-03 | r.12 eist goedgekeurde modellen; Paperclip-pad in `scripts/render-png.mjs` r.9, r.28 (PRP-082) |
+| `uml-domain-modelling` | atlas | bestaat | CAP-06 | AGT-03 | — (CHG-075 doorgevoerd: r.72 traceertabel alleen in het eigen regeldocument, B-55) |
+| `uml-sequence-diagrams` | atlas | bestaat | CAP-07 | AGT-03, AGT-10 | — (PRP-082 doorgevoerd in CHG-078: r.12) |
+| `uml-class-diagram` | atlas | bestaat | CAP-08 | AGT-03 | — (PRP-082 doorgevoerd in CHG-078: r.12; `render-png.mjs` zonder Paperclip-pad) |
 | `architect-database` | atlas | bestaat | CAP-09 | AGT-03 | — |
-| `architect-vertical-slices` | atlas | uitbreiden | CAP-10 | AGT-03 | akkoordmoment voor het sliceplan (PRP-079) |
-| `architect-api-contracts` | atlas | uitbreiden | CAP-11 | AGT-03 | r.41 slice 1 in het contract-akkoord (PRP-079); r.63 controle zonder criteria (PRP-074) |
-| `architect-conventions` | atlas | uitbreiden | CAP-22 | AGT-03 | r.36 "geen aparte controleur" (PRP-074); de definition of done gaat naar CONSTRAINTS.md (r.3, r.11; PRP-084 deel A); ook bijwerken in ACT-02.6 en 02.7 (r.14; ASM-120) |
-| `regelbestanden-en-kwaliteitslat` (werknaam) | atlas | nieuw | CAP-22 | AGT-03 | CONSTRAINTS.md, CLAUDE.md en AGENTS.md opstellen en bijwerken (ASM-120; B-47 vraag 28; PRP-084 deel A) |
-| `architect-implementation-plan` | atlas | uitbreiden | CAP-12, 07, 08, 35 | AGT-03 | r.194 toets alleen op verzoek (PRP-080); nacontrole bij GOV-18 (PRP-081); r.3, r.149-157 en r.192 (PRP-082) |
+| `architect-vertical-slices` | atlas | bestaat | CAP-10 | AGT-03 | — (PRP-079 doorgevoerd in CHG-078: akkoord op het sliceplan) |
+| `architect-api-contracts` | atlas | bestaat | CAP-11 | AGT-03 | — (PRP-079 en PRP-074 doorgevoerd in CHG-078: r.41, r.63) |
+| `architect-conventions` | atlas | bestaat | CAP-22 | AGT-03 | — (PRP-074 en PRP-084 deel A doorgevoerd in CHG-078: lichte controle, definition of done in CONSTRAINTS.md, bijwerken) |
+| `regelbestanden-en-kwaliteitslat` | atlas | bestaat | CAP-22 | AGT-03 | — (nieuw in fase 3, CHG-078: CONSTRAINTS.md, CLAUDE.md met de kop "Voor de bouw" en AGENTS.md met de zes werkregels; B-55) |
+| `architect-implementation-plan` | atlas | bestaat | CAP-12, 07, 08, 35 | AGT-03 | — (PRP-080, PRP-081 deel A en PRP-082 doorgevoerd in CHG-078: toets altijd, nacontrole, werkpakketten) |
 | `architect-clarification` | atlas | bestaat | CAP-17 | AGT-03, AGT-10 | — |
 | `ontwerppagina` | atlas | bestaat | CAP-39 | AGT-03 | — |
-| `ontwerp-controle` (werknaam) | atlas | nieuw | CAP-35 | AGT-10 | controlelijst voor al het werk van Atlas (PRP-074) |
-| `backlog-regie` (werknaam) | socrates | nieuw | CAP-13, 14, 20, 37, 38 | AGT-08 | backlog-items, vaste controles, backlog gereed, uitbreidingslijst, ritme (PRP-077) |
+| `ontwerp-controle` | atlas | bestaat | CAP-35 | AGT-10 (voorgeladen) | — (nieuw in fase 2, CHG-078: controlelijst voor al het werk van Atlas, met nacontrole; PRP-074) |
+| `backlog-regie` | socrates | bestaat | CAP-13, 14, 20, 37, 38 | AGT-08 | — (PRP-077 doorgevoerd in fase 1: backlog-items, vaste controles, backlog gereed, uitbreidingslijst, ritme) |
 | `grilling` | mattpocock-skills | onbekend | CAP-02, 03, 05, 17 | AGT-02, AGT-03 | — (OPEN-33) |
 | `domain-modeling` | mattpocock-skills | onbekend | CAP-02, 06, 21 | AGT-02, AGT-03 | — (OPEN-33) |
 | `research` | mattpocock-skills | onbekend | geen vaste stap | AGT-03, AGT-10 | — (OPEN-33) |
@@ -101,13 +101,13 @@ Nummers uit 0.18 blijven (B-28). CAP-28 t/m CAP-34 gaan over de bouw en vallen b
 | `api-and-interface-design` | agent-skills | onbekend | CAP-11, 17 | AGT-03 | — (OPEN-33) |
 | `deprecation-and-migration` | agent-skills | onbekend | CAP-11, 17 | AGT-03 | — (OPEN-33) |
 | `constraint-driven-development` | agent-skills | onbekend | CAP-22 (kwaliteitslat, B-46) | AGT-03 | — (OPEN-33) |
-| `context-engineering` | agent-skills | onbekend | CAP-22 (regelbestanden, B-47 vraag 36) | AGT-03 | `atlas.md` gaat hem noemen (PRP-084 deel B) (OPEN-33) |
+| `context-engineering` | agent-skills | onbekend | CAP-22 (regelbestanden, B-47 vraag 36) | AGT-03 | — (`atlas.md` r.61 noemt hem, PRP-084 deel B doorgevoerd in CHG-078) (OPEN-33) |
 
-**Telling:** 42 skills: 15 bestaat, 12 uitbreiden, 3 nieuw en 12 onbekend (sinds 1.0.27: `architect-use-case-review` naar uitbreiden, PRP-085, B-50). Niet in de keten en niet meegeteld: de zes `bpmn-*`-skills van Socrates (alleen PRC-08, op verzoek) en `improve-codebase-architecture` en `codebase-design` van Atlas (bestaande code beoordelen; status onbekend).
+**Telling:** 42 skills: 30 bestaat, 0 uitbreiden, 0 nieuw en 12 onbekend (sinds 1.0.27: `architect-use-case-review` naar uitbreiden, PRP-085, B-50; sinds CHG-076: `requirements-analysis` en `requirements-validation` naar bestaat; sinds CHG-077: `regie`, `vragen-en-akkoordrondes` en `backlog-regie` naar bestaat na fase 1; sinds CHG-078: de acht uitbreidingen en de twee nieuwe skills van Atlas naar bestaat na fase 2 en 3). De 12 onbekend zijn de skills uit andere plugins (OPEN-33). Niet in de keten en niet meegeteld: de zes `bpmn-*`-skills van Socrates (alleen PRC-08, op verzoek) en `improve-codebase-architecture` en `codebase-design` van Atlas (bestaande code beoordelen; status onbekend).
 
 ## 3. Skills die in 1.0 niet meer gebruikt worden
 
-Ze staan in `skills/` of op het Paperclip-platform. Wat ermee gebeurt, staat in `afbouwlijst-paperclip.md`.
+Ze stonden in `skills/` (weggehaald na B-55, afbouwlijst C1; de git-geschiedenis bewaart ze) of staan op het Paperclip-platform. Zie `afbouwlijst-paperclip.md`.
 
 | Skill | Paperclip-resten | Wat in 1.0 overgaat |
 | --- | --- | --- |

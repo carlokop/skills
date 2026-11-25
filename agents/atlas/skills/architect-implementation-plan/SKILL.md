@@ -1,13 +1,13 @@
 ---
 name: architect-implementation-plan
-description: Gebruik wanneer een developer vraagt om een implementatieplan voor een onderdeel of use case die nog niet is uitgewerkt. Redeneert hoe de use case in het bestaande ontwerp past, past zo nodig de modellen aan (met overleg), en levert een concreet implementatieplan met taken voor de developers. Eisen en use cases komen uit de goedgekeurde documenten.
+description: Maakt per slice het implementatieplan met werkpakketten, op opdracht van de aanroeper, en toetst de backlog-items van de slice tegen die werkpakketten. Gebruik ook als een developer vraagt om een plan voor een onderdeel of use case die nog niet is uitgewerkt. Redeneert hoe het werk in het bestaande ontwerp past en past zo nodig de modellen aan (met overleg). Eisen en use cases komen uit de goedgekeurde documenten.
 ---
 
 # Architect: implementatieplan voor een nieuwe of nog niet uitgewerkte use case
 
 > De paden in deze skill zijn de standaard. Schrijft het project andere plekken voor (CLAUDE.md, AGENTS.md, docs/README.md), volg dan het project.
 
-Dit gebeurt in de bouwfase. Een developer-agent (of de gebruiker) krijgt een opdracht waarvoor het ontwerp nog niet bestaat, of waarvoor het bestaande ontwerp niet past, en vraagt om een plan. Het plan bepaalt **hoe het in de architectuur past**, past de modellen aan als dat nodig is en levert een plan waarmee een developer kan bouwen zonder zelf architectuurkeuzes te hoeven maken. **Wat** het systeem moet doen (eisen, use cases, bedrijfsregels, acceptatiecriteria) staat vast in de goedgekeurde documenten en wordt hier niet bepaald.
+Dit gebeurt per slice, na het bouwcontract, op opdracht van de aanroeper. In de bouwfase kan ook een developer-agent (of de gebruiker) om een plan vragen, voor een opdracht waarvoor het ontwerp nog niet bestaat of niet past. Het plan bepaalt **hoe het in de architectuur past**, past de modellen aan als dat nodig is en levert een plan waarmee een developer kan bouwen zonder zelf architectuurkeuzes te hoeven maken. **Wat** het systeem moet doen (eisen, use cases, bedrijfsregels, acceptatiecriteria) staat vast in de goedgekeurde documenten en wordt hier niet bepaald.
 
 Communiceer in het Nederlands. Naar de gebruiker kort en helder; naar developers concreet en volledig.
 
@@ -146,22 +146,24 @@ Migraties in volgorde (tabel/kolom, type, null, default, index, FK + delete-gedr
 ## 6. Foutafhandeling en randgevallen
 Welke fouten, hoe afgehandeld, welke HTTP-statuscodes/meldingen, concurrency, idempotentie, validatieregels.
 
-## 7. Volgorde en taken
-Genummerde, onafhankelijke taken die een developer kan oppakken. Per taak:
-- **Titel** (werkwoord eerst), **doel** in één zin
+## 7. Volgorde en werkpakketten
+Genummerde werkpakketten (WP-1, WP-2, …) in uitvoervolgorde. De hoofdsessie deelt ze op in taken. Per werkpakket:
+- **ID en titel** (werkwoord eerst), **doel** in één zin
 - **Bestanden/klassen** die geraakt worden
-- **Afhankelijk van:** taaknummer(s)
-- **Klaar als (acceptatiecriteria):** controleerbaar, bijv. "POST /x met geldige data geeft 201 en een rij in `y`". Verwijs waar mogelijk naar de AC-ID's van de use case.
+- **Afhankelijk van:** werkpakket-ID('s)
+- **Klaar als (acceptatiecriteria):** controleerbaar, bijv. "POST /x met geldige data geeft 201 en een rij in `y`". Noem de AC-ID's van de use case.
+- **Pagina** (alleen frontendpakket): paginabrief en paginatype
 - **Tests:** welke (unit, feature, integratie) en welke gevallen
-- **Compatibiliteit:** raakt deze taak een breaking change (zie sectie 3)? Zo ja: welke afnemer, welke overgangsregel, en welke test bewijst dat oude clients/data blijven werken
-Taken zijn zo klein dat ze in één sessie af kunnen en parallel uit te voeren waar de afhankelijkheden dat toelaten.
+- **Compatibiliteit:** raakt dit pakket een breaking change (zie sectie 3)? Zo ja: welke afnemer, welke overgangsregel, en welke test bewijst dat oude clients/data blijven werken
+- **Opruimen vanaf** (alleen opruimpakket na een breaking change): de trigger of datum uit sectie 3
+Werkpakketten zijn zo klein dat ze in één sessie af kunnen en parallel uit te voeren zijn waar de afhankelijkheden dat toelaten.
 
 ## 8. Testplan
 Hoe wordt de use case als geheel getoetst (scenario's uit de use case, foutgevallen, niet-functionele eisen zoals prestaties), plus de contract- en regressietests en de migratietest (heen en terug) uit de breaking-changeaanpak.
 
 ## 9. Risico's en open punten
 ## 10. Definition of done
-Code volgt de klassen in het ontwerp (namen, namespaces, verantwoordelijkheden), tests slagen, migraties draaien heen en terug, alle genoemde breaking changes zijn afgehandeld zoals in sectie 3 (afnemers omgezet, compatibiliteitstests groen, opruimtaak aangemaakt), geen afwijking van het model zonder overleg.
+De definition of done staat in `CONSTRAINTS.md`. Specifiek voor dit plan: code volgt de klassen in het ontwerp (namen, namespaces, verantwoordelijkheden), migraties draaien heen en terug, en alle genoemde breaking changes zijn afgehandeld zoals in sectie 3 (afnemers omgezet, compatibiliteitstests groen, opruimpakket opgenomen), en geen afwijking van het model zonder overleg.
 ```
 
 ### 7. Overdracht aan de aanroeper
@@ -189,10 +191,11 @@ Code volgt de klassen in het ontwerp (namen, namespaces, verantwoordelijkheden),
 Dit gaat voor stappen hierboven die er anders over zeggen.
 
 - **Trigger:** een opdracht van de aanroeper voor een slice, of namens een developer of de gebruiker. Output: **werkpakketten** met afhankelijkheden en AC-verwijzingen, geen taken. Taken of backlog-items aanmaken hoort niet bij deze skill.
-- **Ontwerp per slice.** Een stap binnen het globale ontwerp, per profiel (`architectuurprofielen`): P1 templates, blokken en configuratie van de slice (`architect-cms-configuratie`); P2 componenten, routes en de sequenties van nieuwe flows (`architect-componentontwerp`); P3 modules, componenten, interfaces en zo nodig sequentie- en klassendiagram (`uml-sequence-diagrams`, `uml-class-diagram`). Input zijn ook de paginabrieven en ontwerpen en het **bouwcontract** (`architect-api-contracts`). Raakt de slice het globale ontwerp of het profiel, dan stop je en meld je in je eindbericht dat eerst het globale ontwerp of profiel bijgewerkt moet worden, met het ontwerpbesluit.
+- **Ontwerp per slice.** Een stap binnen het globale ontwerp, per profiel (`architectuurprofielen`): P1 templates, blokken en configuratie van de slice (`architect-cms-configuratie`); P2 componenten, routes en de sequenties van nieuwe flows (`architect-componentontwerp`); P3 modules, componenten, interfaces en zo nodig sequentie- en klassendiagram (`uml-sequence-diagrams`, `uml-class-diagram`). Input zijn ook de paginabrieven en ontwerpen. Het bouwcontract (`architect-api-contracts`) volgt op het ontwerp per slice. Raakt de slice het globale ontwerp of het profiel, dan stop je en meld je in je eindbericht dat eerst het globale ontwerp of profiel bijgewerkt moet worden, met het ontwerpbesluit.
 - **Voorwaardelijk akkoord.** Stap 5 verwijst naar het akkoord op het bouwcontract per slice. Geldt een voorwaarde (breaking change, niet-compatibele wijziging, nieuwe afhankelijkheid, gevolgen voor beveiliging, privacy, kosten of prestaties, onduidelijk gedrag, grote wijziging), dan zijn ontwerp per slice en plan onderdeel van dat akkoord en noem je de voorwaarde.
-- **Taken toetsen tegen de werkpakketten** (als de aanroeper dat vraagt). Lees de epics en taken die van de slice gemaakt zijn en controleer: is elk werkpakket gedekt, kloppen de afhankelijkheden, passen de taken in het globale ontwerp, verwijst elke frontendtaak naar een brief ("frontendtaak zonder brief")? Je opmerkingen staan in je eindbericht en noemen per opmerking het werkpakket of de taak. Jij hebt het laatste woord op technische punten. Na 2 rondes, of bij een conflict, beslist de gebruiker: zet het verschil als open vraag in je eindbericht.
+- **Taken toetsen tegen de werkpakketten**, altijd vóór het akkoord op het backlog. Lees de taak- en epicbestanden van de slice (standaard in `docs/backlog/todo/`, of de plek die het project voorschrijft) en controleer: is elk werkpakket gedekt, kloppen de afhankelijkheden, passen de taken in het globale ontwerp, verwijst elke frontendtaak naar een brief ("frontendtaak zonder brief") en noemt ze het paginatype uit het plan, en noemt elke opruimtaak "Opruimen vanaf" zoals in het plan? Uitkomst in je eindbericht: "geen opmerkingen", of opmerkingen die elk het werkpakket of de taak noemen. Jij hebt het laatste woord op technische punten. Na 2 toetsrondes, of bij een conflict over iets niet-technisch, beslist de gebruiker: zet het verschil als open vraag in je eindbericht. Klaar als elk werkpakket en elke taak van de slice is nagelopen.
+- **Nacontrole van de backlog-items.** Week een antwoord van de gebruiker op het backlog af van het advies, dan laat de aanroeper jou de verwerking nakijken: is elk afwijkend antwoord goed verwerkt in de taken, en is er geen nieuwe keuze over het hoofd gezien? Een nieuwe keuze wordt een vraag, geen afkeuring. Uitkomst: "verwerking in orde", of opmerkingen. Klaar als elk afwijkend antwoord is nagelopen en de uitkomst in je eindbericht staat.
 - **Per profiel:** de werkpakketten volgen het profiel; bij P1 vooral configuratie-, thema-, plugin- en contentpakketten.
-- **Kwaliteitscriteria:** elk werkpakket heeft AC-ID's en afhankelijkheden; elk frontendpakket verwijst naar brief en paginatype; geen taken of backlog-items door Atlas; de controle op breaking changes (4b) blijft verplicht; bij een voorwaarde staat die bij het akkoord op het bouwcontract.
-- **Voorbeeld:** werkpakket WP-2 "Orders-tabel en repository" (AC-03.1, AC-03.2), hangt af van WP-1. Frontendpakket WP-4 "Winkelwagen" (brief *Winkelwagen*, paginatype overzicht). Bij de toets: "Taak *Create orders table* mist de afhankelijkheid van WP-1." En: "Taak *Build cart page* verwijst niet naar de brief *Winkelwagen*."
+- **Kwaliteitscriteria:** elk werkpakket heeft AC-ID's en afhankelijkheden; elk frontendpakket verwijst naar brief en paginatype; elk opruimpakket noemt "Opruimen vanaf"; geen taken of backlog-items door Atlas; de controle op breaking changes (4b) blijft verplicht; bij een voorwaarde staat die bij het akkoord op het bouwcontract.
+- **Voorbeeld:** werkpakket WP-2 "Orders-tabel en repository" (AC-03.1, AC-03.2), hangt af van WP-1. Frontendpakket WP-4 "Winkelwagen" (brief *Winkelwagen*, paginatype overzicht). Bij de toets: "Taak *Create orders table* mist de afhankelijkheid van WP-1." En: "Taak *Build cart page* verwijst niet naar de brief *Winkelwagen*, en noemt paginatype detail; het plan zegt overzicht."
 - Use cases zijn van Socrates; het opdelen in taken hoort niet bij deze skill.

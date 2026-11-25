@@ -69,7 +69,7 @@ Uitvoer:
 - `docs/architecture/model/domain-model.json` (bron)
 - `docs/architecture/domain-model.md` en `docs/architecture/artifacts/domain-model.html` (gegenereerd), `kind: "class"`.
 - Per concept een korte `description` met de betekenis; per relatie een `description`.
-- Vul in `docs/architecture/use-cases.md` of `STATUS.md` een traceertabel aan: use case → gebruikte domeinconcepten.
+- Zet de traceertabel (use case → gebruikte domeinconcepten) in je eigen regeldocument in `docs/architecture/` (zie "Oplevering" hieronder). Het use-case-document van Socrates lees je alleen.
 
 Grill-sessie bij twijfel over begrippen of relaties ("Is a Customer the same as a User?", "Can one order have several payments?"). Werk dit als `domain-modeling`-sessie (zie hierboven).
 
